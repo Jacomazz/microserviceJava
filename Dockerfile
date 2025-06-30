@@ -9,6 +9,6 @@ EXPOSE 3050
 
 ENTRYPOINT ["java","-jar","/app.jar"]
 
-##docker build -t post .
+##docker build -t microservice .
 
-##docker run -p 3050:8080 post
+##docker run -p 3050:8080 microservice
