@@ -27,9 +27,9 @@ public class CountryRecordController {
         return ResponseEntity.ok(countryWeather);
     }
 
-    @PutMapping("/{country}")
-    public ResponseEntity<CountryWeather> updateCountry(@RequestBody InfoDTO info) {
-        return null;
+    @PutMapping("/{countryName}")
+    public ResponseEntity<CountryWeather> updateCountry(@RequestBody InfoDTO info, @PathVariable String countryName) {
+        return ResponseEntity.ok(service.updateCountry(info, countryName));
     }
 
 

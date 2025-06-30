@@ -7,8 +7,8 @@ import java.util.Objects;
 @Embeddable
 public class InfoDTO {
 
-    private boolean visited;
     private String notes;
+    private boolean visited;
     private double rating;
 
     public InfoDTO() {

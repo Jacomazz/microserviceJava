@@ -24,11 +24,15 @@ public class CountryWeather {
     private boolean visited;
     private String notes;
     private double rating;
+    private String coutryName;
 
     public CountryWeather() {
     }
 
-    public CountryWeather(int id, List<String> capital, String population, String currency, String flagPng, double temperature, String code, String restrievedAt, boolean visited, String notes, double rating) {
+    public CountryWeather(int id, List<String> capital, String population,
+                          String currency, String flagPng, double temperature,
+                          String code, String restrievedAt, boolean visited,
+                          String notes, double rating, String countryName) {
         this.id = id;
         this.capital = capital;
         this.population = population;
@@ -40,6 +44,15 @@ public class CountryWeather {
         this.visited = visited;
         this.notes = notes;
         this.rating = rating;
+        this.coutryName = countryName;
+    }
+
+    public String getCoutryName() {
+        return coutryName;
+    }
+
+    public void setCoutryName(String coutryName) {
+        this.coutryName = coutryName;
     }
 
     public int getId() {
@@ -133,28 +146,29 @@ public class CountryWeather {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof CountryWeather that)) return false;
-        return id == that.id && population == that.population && Double.compare(temperature, that.temperature) == 0 && code == that.code && visited == that.visited && Double.compare(rating, that.rating) == 0 && Objects.equals(capital, that.capital) && Objects.equals(currency, that.currency) && Objects.equals(flagPng, that.flagPng) && Objects.equals(retrievedAt, that.retrievedAt) && Objects.equals(notes, that.notes);
+        return id == that.id && Double.compare(temperature, that.temperature) == 0 && visited == that.visited && Double.compare(rating, that.rating) == 0 && Objects.equals(capital, that.capital) && Objects.equals(population, that.population) && Objects.equals(currency, that.currency) && Objects.equals(flagPng, that.flagPng) && Objects.equals(code, that.code) && Objects.equals(retrievedAt, that.retrievedAt) && Objects.equals(notes, that.notes) && Objects.equals(coutryName, that.coutryName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, capital, population, currency, flagPng, temperature, code, retrievedAt, visited, notes, rating);
+        return Objects.hash(id, capital, population, currency, flagPng, temperature, code, retrievedAt, visited, notes, rating, coutryName);
     }
 
     @Override
     public String toString() {
         return "CountryWeather{" +
                 "id=" + id +
-                ", capital='" + capital + '\'' +
-                ", population=" + population +
+                ", capital=" + capital +
+                ", population='" + population + '\'' +
                 ", currency='" + currency + '\'' +
                 ", flagPng='" + flagPng + '\'' +
                 ", temperature=" + temperature +
-                ", code=" + code +
+                ", code='" + code + '\'' +
                 ", retrievedAt='" + retrievedAt + '\'' +
                 ", visited=" + visited +
                 ", notes='" + notes + '\'' +
                 ", rating=" + rating +
+                ", coutryName='" + coutryName + '\'' +
                 '}';
     }
 }

@@ -1,9 +1,6 @@
 package com.example.ItsMicroserciziExam.service;
 
-import com.example.ItsMicroserciziExam.models.CountryWeather;
-import com.example.ItsMicroserciziExam.models.CountryDTO;
-import com.example.ItsMicroserciziExam.models.Flags;
-import com.example.ItsMicroserciziExam.models.WeatherDTO;
+import com.example.ItsMicroserciziExam.models.*;
 import com.example.ItsMicroserciziExam.repository.CountryRecordRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +27,13 @@ public class CountryRecordServiceImpl implements ICountryRecordServiceImpl{
     @Override
     public CountryWeather getCountry(String countryName) {
 
+        List<CountryWeather> list = (List<CountryWeather>) repository.findAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCoutryName().equals(countryName)) {
+                return list.get(i);
+            }
+        }
+
         CountryWeather countryWeather = new CountryWeather();
 
         List<Map<String, Object>> countrydto = webClientCountryService.getCountry(countryName);
@@ -54,6 +58,25 @@ public class CountryRecordServiceImpl implements ICountryRecordServiceImpl{
         return countryWeather;
 //        return null;
     }
+
+
+    public CountryWeather updateCountry(InfoDTO info, String countryName) {
+
+        List<CountryWeather> list = (List<CountryWeather>) repository.findAll();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCoutryName().equals(countryName)) {
+                list.get(i).setVisited(info.isVisited());
+                list.get(i).setRating(info.getRating());
+                list.get(i).setRating(info.getRating());
+                list.get(i).setNotes(info.getNotes());
+                repository.save(list.get(i));
+                return list.get(i);
+            }
+        }
+        return null;
+    }
+
+
 
 
     public WeatherDTO getWeather (String countryName) {
