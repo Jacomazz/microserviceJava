@@ -1,0 +1,13 @@
+package com.example.ItsMicroserciziExam;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ItsMicroserciziExamApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ItsMicroserciziExamApplication.class, args);
+	}
+
+}
